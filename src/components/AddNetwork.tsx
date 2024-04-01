@@ -65,8 +65,40 @@ const AddNetwork = () => {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex h-1/3 w-1/3 flex-col items-center rounded-xl border p-10">
+    <div className="flex h-screen items-center justify-center px-5 sm:px-0">
+      {/* SP Component */}
+      <div className="flex flex-col items-center gap-5 rounded-xl border p-8 sm:hidden">
+        <p className="text-xl">ADD ONIGIRI CHAIN</p>
+        {isInstall ? (
+          <div className="flex h-full items-center justify-center gap-5">
+            <button
+              className="h-fit w-fit rounded-lg border bg-white p-2 text-black hover:bg-gray-300"
+              onClick={async () => {
+                await addMainnet();
+              }}
+            >
+              ONIGIRI Mainnet
+            </button>
+            <button
+              className="h-fit w-fit rounded-lg border bg-gray-500 p-2 hover:bg-gray-300"
+              onClick={async () => {
+                await addTestnet();
+              }}
+            >
+              ONIGIRI Testnet
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="flex h-full items-center justify-center">
+              <p className="font-bold">Not found Metamask</p>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* PC Component */}
+      <div className="hidden h-1/3 w-1/3 flex-col items-center rounded-xl border p-10 sm:flex">
         <p className="text-2xl">ADD ONIGIRI CHAIN</p>
         {isInstall ? (
           <div className="flex h-full items-center justify-center gap-5">
